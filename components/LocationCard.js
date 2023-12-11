@@ -1,6 +1,6 @@
 import { View, Text } from "react-native";
 
-export default function LocationCard({ location }) {
+export default function LocationCard({ location, type }) {
 	return (
 		<View style={{ padding: 10, paddingTop: 7 }}>
 			<Text
@@ -12,7 +12,7 @@ export default function LocationCard({ location }) {
 				}}
 			>
 				{" "}
-				McDonald's{" "}
+				{location}{" "}
 			</Text>
 			<Text
 				style={{
@@ -23,7 +23,7 @@ export default function LocationCard({ location }) {
 				}}
 			>
 				{" "}
-				Fast Food{" "}
+				{type}{" "}
 			</Text>
 			<View
 				style={{

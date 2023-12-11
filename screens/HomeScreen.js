@@ -1,6 +1,34 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, FlatList } from "react-native";
 import LocationCard from "../components/LocationCard";
 import { SafeAreaView } from "react-native-safe-area-context";
+
+const DATA = [
+	{
+		id: "1",
+		location: "Mcdonald's",
+		type: "FastFood",
+	},
+	{
+		id: "2",
+		location: "KFC",
+		type: "FastFood",
+	},
+	{
+		id: "3",
+		location: "Jack's Place",
+		type: "Steakhouse",
+	},
+	{
+		id: "4",
+		location: "KFry",
+		type: "Korean",
+	},
+	{
+		id: "5",
+		location: "Pepper Lunch",
+		type: "Japanese",
+	},
+];
 
 export default function HomeScreen() {
 	const location = {
@@ -93,10 +121,20 @@ export default function HomeScreen() {
 							marginTop: "5%",
 						}}
 					>
-						<LocationCard location={location} />
-						<LocationCard location={location} />
-						<LocationCard location={location} />
-						<LocationCard location={location} />
+						<FlatList
+							data={DATA}
+							renderItem={({ item }) => (
+								<LocationCard
+									location={item.location}
+									type={item.type}
+								/>
+							)}
+							keyExtractor={(item) => item.id}
+						/>
+						{/* <LocationCard location="Mcdonald" type="FastFOod" />
+						<LocationCard location="Mcdonald" type="FastFOod" />
+						<LocationCard location="Mcdonald" type="FastFOod" />
+						<LocationCard location="Mcdonalds" type="FastFOod" /> */}
 					</View>
 				</View>
 			</View>
