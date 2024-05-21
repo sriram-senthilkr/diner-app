@@ -1,6 +1,8 @@
 import { View, Text, Image, FlatList } from "react-native";
 import LocationCard from "../components/LocationCard";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { MultipleSelectList } from "react-native-dropdown-select-list";
+import React, { useState } from "react";
 
 const DATA = [
 	{
@@ -31,12 +33,18 @@ const DATA = [
 ];
 
 export default function HomeScreen() {
-	const location = {
-		name: "Mcdonald's",
-		area: "Central",
-		price: "$$",
-		vegan: true,
-	};
+	const [selected, setSelected] = useState([]);
+
+	const data2 = [
+		{ key: "1", value: "Mobiles", disabled: true },
+		{ key: "2", value: "Appliances" },
+		{ key: "3", value: "Cameras" },
+		{ key: "4", value: "Computers", disabled: true },
+		{ key: "5", value: "Vegetables" },
+		{ key: "6", value: "Diary Products" },
+		{ key: "7", value: "Drinks" },
+	];
+
 	return (
 		<SafeAreaView
 			edges={["top", "right", "left"]}
@@ -95,7 +103,13 @@ export default function HomeScreen() {
 							}}
 						>
 							<Text>Price</Text>
-							<Text>Rating</Text>
+							<MultipleSelectList
+								setSelected={(val) => setSelected(val)}
+								data={data2}
+								save="value"
+								label="Rating"
+								placeholder="Rating"
+							/>
 						</View>
 					</View>
 				</View>
